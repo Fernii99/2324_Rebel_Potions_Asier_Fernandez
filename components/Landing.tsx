@@ -25,7 +25,7 @@ export default function Landing() {
     }
 
     return(
-        <div className="visible">
+        <div className="visible mt-20">
             <h1>LAS POCIMAS REBELDES</h1>
             <button onClick={getPotions}>
                 Enter

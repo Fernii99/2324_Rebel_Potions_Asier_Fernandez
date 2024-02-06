@@ -71,9 +71,9 @@ export default function LaunchBattle(){
     }
 
     return(
-        <div className="flex flex-row w-screen h-80">
+        <div className="flex flex-row w-screen h-96 mt-20">
 
-            <div className="w-1/3 h-full bg-white mr-20 ml-20">
+            <div className="w-1/3 h-full bg-white mr-20 ml-20 p-5">
                 <h1 className="text-black"> Pocion 1</h1>
                 <Image src={diceNumbers[Player1.dice]} width={80} height={80} alt={"dicePicture"} />
 
@@ -97,7 +97,7 @@ export default function LaunchBattle(){
 
             </div>
 
-            <div className="w-1/3 h-full bg-white mr-20 ml-20">
+            <div className="w-1/3 h-full bg-white mr-20 ml-20 p-5">
                 <h1 className="text-black"> Pocion 2</h1>
                 <Image src={diceNumbers[Player2.dice]} width={80} height={80} alt={"dicePicture"} />
 
@@ -120,11 +120,15 @@ export default function LaunchBattle(){
                 </>
                 }
             </div>
-            <button onClick={playGame}>
-                LAUNCH BATTLE
-            </button>
+            
+            <div>
+                <button className=" bg-white text-black p-5" onClick={playGame}>
+                    LAUNCH BATTLE
+                </button>
+            </div>
         </div>
-
+       
+        
 
 
     )

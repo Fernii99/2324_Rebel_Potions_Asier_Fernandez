@@ -29,7 +29,7 @@ export default function Results() {
     }
 
     return(
-        <div className="flex flex-row w-screen h-80">
+        <div className="flex flex-row w-screen h-80 mt-20">
             <div className="w-1/3 h-full bg-white mr-20 ml-20">
             <div className=" flex flex-row mt-4 justify-center">
              {
@@ -95,10 +95,13 @@ export default function Results() {
                 <span className="text-black">{Math.round(((Player2.dice * 0.1) * 100) / 100)} X {Player2.potion.power} / {Player2.potion.mana} = {Math.round(ResultPotionPlayer2 * 10) /10}</span>
             </div>
         </div>
+        <div>
+                <button className=" bg-white text-black p-5" onClick={playAgain}>
+                    LAUNCH BATTLE
+                </button>
+            </div>
 
-        <button onClick={playAgain}>
-                Play Again
-            </button>
+       
     </div>
     )
 }

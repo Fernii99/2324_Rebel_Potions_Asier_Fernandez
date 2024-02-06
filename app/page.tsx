@@ -30,7 +30,7 @@ export default function Home() {
     
     return(
     <Context.Provider value={{ PotionList, setPotionList, isDataLoaded, Player1, setPlayer1, Player2, setPlayer2, isGameEnd}}>
-        <div className="w-screen"> 
+        <div className="w-screen mt-20"> 
         {!dataLoaded ?
                 <Landing />
             :
