@@ -18,9 +18,11 @@ import poison from '../assets/poison.png';
 
 export default function results() {
 
-    const { PotionList, Player1, setPlayer1, Player2, setPlayer2 } = useContext(Context);
+    const { Player1, Player2 } = useContext(Context);
 
     const diceNumbers = [dice1.src, dice2.src, dice3.src, dice4.src, dice5.src, dice6.src];
+
+    const ResultPotionPlayer1 = (((Player1.dice * 0.1) * Player1.potion.power) / Player1.potion.mana);
 
 
     return(
@@ -36,16 +38,13 @@ export default function results() {
                 :
                     <Image src={poison.src} width={80} height={80} alt={"PotionPicture"} />
             }
-            {Player1.potion == null ? 
-                null
-            :  <>
+            
                 <p className="text-black">Name: {Player1.potion.name}</p>
                 <p className="text-black">Alias: {Player1.potion.alias}</p>
                 <p className="text-black">Curative: {Player1.potion.curative ? "true" : "false"}</p>
                 <p className="text-black">Power: {Player1.potion.power}</p> 
                 <p className="text-black">Mana: {Player1.potion.mana}</p> 
-            </>
-            }
+            
 
         </div>
 
