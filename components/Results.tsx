@@ -1,7 +1,5 @@
-"use client"
-
 import { Context } from "@/helpers/Context";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Image from "next/image";
 
 
@@ -18,17 +16,26 @@ import poison from '../assets/poison.png';
 
 export default function results() {
 
-    const { Player1, Player2 } = useContext(Context);
+    const { Player1, Player2, isGameEnd } = useContext(Context);
 
     const diceNumbers = [dice1.src, dice2.src, dice3.src, dice4.src, dice5.src, dice6.src];
 
     const ResultPotionPlayer1 = (((Player1.dice * 0.1) * Player1.potion.power) / Player1.potion.mana);
+    const ResultPotionPlayer2 = (((Player2.dice * 0.1) * Player2.potion.power) / Player2.potion.mana);
 
+    function playAgain(){
+        isGameEnd(false);
+    }
 
     return(
         <div className="flex flex-row w-screen h-80">
             <div className="w-1/3 h-full bg-white mr-20 ml-20">
-            <h1 className="text-black"> Result for potion 1</h1>
+             {
+               ResultPotionPlayer1 > ResultPotionPlayer2 ? 
+               <h1 className="text-black"> Winner Potion</h1>
+                :
+                <h1 className="text-black">Loser Potion</h1>
+             }
             <Image src={diceNumbers[Player1.dice]} width={80} height={80} alt={"dicePicture"} />
 
             {/* POTION / POISON IMAGE */}
@@ -38,18 +45,22 @@ export default function results() {
                 :
                     <Image src={poison.src} width={80} height={80} alt={"PotionPicture"} />
             }
-            
+        
                 <p className="text-black">Name: {Player1.potion.name}</p>
                 <p className="text-black">Alias: {Player1.potion.alias}</p>
                 <p className="text-black">Curative: {Player1.potion.curative ? "true" : "false"}</p>
                 <p className="text-black">Power: {Player1.potion.power}</p> 
                 <p className="text-black">Mana: {Player1.potion.mana}</p> 
             
-
         </div>
 
         <div className="w-1/3 h-full bg-white mr-20 ml-20">
-            <h1 className="text-black"> Pocion 2</h1>
+            {
+               ResultPotionPlayer1 < ResultPotionPlayer2 ? 
+               <h1 className="text-black"> Winner Potion</h1>
+                :
+                <h1 className="text-black">Loser Potion</h1>
+            }
             <Image src={diceNumbers[Player2.dice]} width={80} height={80} alt={"dicePicture"} />
 
             {/* POTION / POISON IMAGE */}
@@ -71,6 +82,10 @@ export default function results() {
             </>
             }
         </div>
+
+        <button onClick={playAgain}>
+                Play Again
+            </button>
     </div>
     )
 }

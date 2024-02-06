@@ -26,22 +26,24 @@ export default function Home() {
 
     }, [gameEnd, dataLoaded])
 
-    return(
-    <Context.Provider value={{ PotionList, setPotionList, isDataLoaded, Player1, setPlayer1, Player2, setPlayer2, gameEnd, isGameEnd}}>
-        <div className="w-screen"> 
-        {
-            dataLoaded ?
-                <LaunchBattle />
-            : 
-                <Landing />
-        }
-        {/* {
-            gameEnd && dataLoaded ?
-                <Results />
-            :
-                <LaunchBattle />
 
-        } */}
+    
+    return(
+    <Context.Provider value={{ PotionList, setPotionList, isDataLoaded, Player1, setPlayer1, Player2, setPlayer2, isGameEnd}}>
+        <div className="w-screen"> 
+        {!dataLoaded ?
+                <Landing />
+            :
+        <>
+            {
+            dataLoaded && !gameEnd ? 
+                <LaunchBattle/>
+            :
+                <Results/>
+            }
+        
+        </>
+        }
         </div>
     </Context.Provider>
     
