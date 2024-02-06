@@ -15,7 +15,7 @@ import potion from '../assets/potion.png';
 import poison from '../assets/poison.png';
 
 
-export default function results() {
+export default function Results() {
 
     const { Player1, Player2, isGameEnd } = useContext(Context);
 
@@ -79,12 +79,12 @@ export default function results() {
             {Player1.potion == null ? 
                 null
             :  <>
-                <p className="text-black">Name: {Player2.potion.name}</p>
-                <p className="text-black">Alias: {Player2.potion.alias}</p>
-                <p className="text-black">Curative: {Player2.potion.curative ? "true" : "false"}</p>
-                <p className="text-black">Power: {Player2.potion.power}</p> 
-                <p className="text-black">Mana: {Player2.potion.mana}</p> 
-            </>
+                    <p className="text-black">Name: {Player2.potion.name}</p>
+                    <p className="text-black">Alias: {Player2.potion.alias}</p>
+                    <p className="text-black">Curative: {Player2.potion.curative ? "true" : "false"}</p>
+                    <p className="text-black">Power: {Player2.potion.power}</p> 
+                    <p className="text-black">Mana: {Player2.potion.mana}</p> 
+                </>
             }
         </div>
 
