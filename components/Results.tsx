@@ -1,7 +1,8 @@
+"use client"
+
 import { Context } from "@/helpers/Context";
 import { useContext } from "react";
 import Image from "next/image";
-
 
 import dice1 from '../assets/dado1.png';
 import dice2 from '../assets/dado2.png';
@@ -36,15 +37,18 @@ export default function results() {
                 :
                 <h1 className="text-black">Loser Potion</h1>
              }
-            <Image src={diceNumbers[Player1.dice]} width={80} height={80} alt={"dicePicture"} />
-
-            {/* POTION / POISON IMAGE */}
-            {
+                {/* POTION / POISON IMAGE */}
+              {
                 Player1.potion.curative ? 
                     <Image src={potion.src} width={80} height={80} alt={"PotionPicture"} />
                 :
                     <Image src={poison.src} width={80} height={80} alt={"PotionPicture"} />
             }
+
+            <div className="">
+                <p>Dice Result</p> <Image src={diceNumbers[Player1.dice]} width={80} height={80} alt={"dicePicture"} />
+
+            </div>
         
                 <p className="text-black">Name: {Player1.potion.name}</p>
                 <p className="text-black">Alias: {Player1.potion.alias}</p>
@@ -61,15 +65,16 @@ export default function results() {
                 :
                 <h1 className="text-black">Loser Potion</h1>
             }
-            <Image src={diceNumbers[Player2.dice]} width={80} height={80} alt={"dicePicture"} />
-
             {/* POTION / POISON IMAGE */}
             {
                 Player2.potion.curative ? 
-                    <Image src={potion.src} width={80} height={80} alt={"dicePicture"} />
+                    <Image src={potion.src} width={80} height={80} alt={"PotionPicture"} />
                 :
-                    <Image src={poison.src} width={80} height={80} alt={"dicePicture"} />
+                    <Image src={poison.src} width={80} height={80} alt={"PotionPicture"} />
             }
+
+            <Image src={diceNumbers[Player2.dice]} width={80} height={80} alt={"dicePicture"} />
+            
 
             {Player1.potion == null ? 
                 null
