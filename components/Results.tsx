@@ -31,6 +31,7 @@ export default function Results() {
     return(
         <div className="flex flex-row w-screen h-80">
             <div className="w-1/3 h-full bg-white mr-20 ml-20">
+            <div className=" flex flex-row mt-4 justify-center">
              {
                ResultPotionPlayer1 > ResultPotionPlayer2 ? 
                <h1 className="text-black"> Winner Potion</h1>
@@ -44,48 +45,55 @@ export default function Results() {
                 :
                     <Image src={poison.src} width={80} height={80} alt={"PotionPicture"} />
             }
-
-            <div className="">
-                <p>Dice Result</p> <Image src={diceNumbers[Player1.dice]} width={80} height={80} alt={"dicePicture"} />
-
             </div>
-        
-                <p className="text-black">Name: {Player1.potion.name}</p>
-                <p className="text-black">Alias: {Player1.potion.alias}</p>
-                <p className="text-black">Curative: {Player1.potion.curative ? "true" : "false"}</p>
-                <p className="text-black">Power: {Player1.potion.power}</p> 
-                <p className="text-black">Mana: {Player1.potion.mana}</p> 
+            <div className=" flex flex-row mt-4 justify-center">
+                <span className="text-black align-center flex justify-center" >Dice Result</span> <Image src={diceNumbers[Player1.dice]} width={80} height={80} alt={"dicePicture"} />
+            </div>
+
+            <div className=" flex flex-row mt-4 justify-center">
+                <span className="text-black">{Player1.dice} X 0.1</span> <span className="text-black"> ={Math.round((Player1.dice * 0.1)*100)/100}</span>
+            </div>
+
+            <div className=" flex flex-row mt-4 justify-center">
+                <span className="text-black">Total Score</span>
+            </div>
+            <div className=" flex flex-row mt-4 justify-center">
+            <span className="text-black">{Math.round(((Player1.dice * 0.1) * 100) / 100)} X {Player1.potion.power} / {Player1.potion.mana} = {Math.round(ResultPotionPlayer1 * 10) /10}</span>
+            </div>
+               
             
         </div>
 
         <div className="w-1/3 h-full bg-white mr-20 ml-20">
-            {
-               ResultPotionPlayer1 < ResultPotionPlayer2 ? 
-               <h1 className="text-black"> Winner Potion</h1>
-                :
-                <h1 className="text-black">Loser Potion</h1>
-            }
-            {/* POTION / POISON IMAGE */}
-            {
-                Player2.potion.curative ? 
-                    <Image src={potion.src} width={80} height={80} alt={"PotionPicture"} />
-                :
-                    <Image src={poison.src} width={80} height={80} alt={"PotionPicture"} />
-            }
+            <div className=" flex flex-row mt-4 justify-center">
+                {
+                ResultPotionPlayer1 < ResultPotionPlayer2 ? 
+                <h1 className="text-black"> Winner Potion</h1>
+                    :
+                    <h1 className="text-black">Loser Potion</h1>
+                }
+                    {/* POTION / POISON IMAGE */}
+                {
+                    Player1.potion.curative ? 
+                        <Image src={potion.src} width={80} height={80} alt={"PotionPicture"} />
+                    :
+                        <Image src={poison.src} width={80} height={80} alt={"PotionPicture"} />
+                }
+                </div>
+                <div className=" flex flex-row mt-4 justify-center">
+                <span className="text-black align-center flex justify-center" >Dice Result</span> <Image src={diceNumbers[Player2.dice]} width={80} height={80} alt={"dicePicture"} />
+            </div>
 
-            <Image src={diceNumbers[Player2.dice]} width={80} height={80} alt={"dicePicture"} />
-            
+            <div className=" flex flex-row mt-4 justify-center">
+                <span className="text-black">{Player2.dice} X 0.1</span> <span className="text-black"> ={Math.round((Player2.dice * 0.1)*100)/100}</span>
+            </div>
 
-            {Player1.potion == null ? 
-                null
-            :  <>
-                    <p className="text-black">Name: {Player2.potion.name}</p>
-                    <p className="text-black">Alias: {Player2.potion.alias}</p>
-                    <p className="text-black">Curative: {Player2.potion.curative ? "true" : "false"}</p>
-                    <p className="text-black">Power: {Player2.potion.power}</p> 
-                    <p className="text-black">Mana: {Player2.potion.mana}</p> 
-                </>
-            }
+            <div className=" flex flex-row mt-4 justify-center">
+                <span className="text-black">Total Score</span>
+            </div>
+            <div className=" flex flex-row mt-4 justify-center">
+                <span className="text-black">{Math.round(((Player2.dice * 0.1) * 100) / 100)} X {Player2.potion.power} / {Player2.potion.mana} = {Math.round(ResultPotionPlayer2 * 10) /10}</span>
+            </div>
         </div>
 
         <button onClick={playAgain}>
